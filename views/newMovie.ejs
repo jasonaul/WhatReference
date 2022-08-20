@@ -1,0 +1,21 @@
+<%- include('./partials/header.ejs') %>
+
+<h1>Add a Movie</h1>
+
+<form method="POST" action="/movies">
+    <fieldset>
+        <label for="title">Title:</label>
+        <input id="title" type="text" name="title" placeholder="Movie Title">
+    </fieldset>
+    <fieldset>
+        <label for="image">Image URL:</label>
+        <input id="image" type="text" name="image" placeholder="Image URL">
+    </fieldset>
+    <button>Submit</button>
+</form>
+
+
+
+
+
+<%- include('./partials/footer.ejs') %>
