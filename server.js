@@ -1,11 +1,16 @@
 const express = require('express');
 const app = express();
 const methodOverride = require('method-override');
-const session = require('express-session')
+/* const session = require('express-session') */
+
+
 
 // Middleware
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+app.use(express.static("public"))
+app.use(methodOverride('_method'))
+
 
 // Mongoose
 const mongoose = require('mongoose')
@@ -15,12 +20,59 @@ mongoose.connect(mongoURI)
 
 //Models Required:
 
-const Movie = require('./models/movie.js')
+const Movie = require('./models/movie.js');
+const Reference = require('./models/references.js');
 
 app.get('/', (req, res) => {
     res.render('home.ejs')
 })
 
+
+
+
+
+
+
+
+app.get('/references', (req, res) => {
+    res.send("Initial set-up begun")
+})
+
+app.get('/movies', async (req, res) => {
+    /* const movie = Movie.findById(req.params.id) */
+    /* let movies = Movie.findById(req.params.id) */
+    let movies = await Movie.find({})
+    res.render('movies.ejs', {
+        movies
+    })
+    
+})
+
+//SHOW Movies
+app.get('/movies/:id', async (req, res) => {
+    const movies = await Movie.findById(req.params.id);
+    res.render('movieID.ejs', {
+        movies
+    })
+})
+
+// NEW MOVIE REFERENCE
+app.get('/movies/:id/new', async (req, res) => {
+    const movies = await Movie.findById(req.params.id);
+    res.render('reference.ejs', {
+        movies
+    });
+})
+
+app.post('/movies/:id', (req, res) => {
+    Reference.create(req.body, (error, createdReference) => {
+        if (error) {
+            console.log('error', error);
+        } else {
+            res.redirect('/movies/:id')
+        }
+    })
+})
 
 
 
@@ -40,28 +92,6 @@ app.post('/movies', (req, res) => {
         }
     })
     
-})
-
-
-
-app.get('/references', (req, res) => {
-    res.send("Initial set-up begun")
-})
-
-app.get('/movies', (req, res) => {
-    /* const movie = Movie.findById(req.params.id) */
-    let movies = Movie.findById(req.params.id)
-    console.log('movies', movies)
-    res.render('movies.ejs', {
-        movies
-    })
-})
-
-//SHOW Movies
-app.get('/movies/:id', (req, res) => {
-    res.render('movies.ejs', {
-        movies: Movie[req.params.id]
-    })
 })
 
 
