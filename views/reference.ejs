@@ -1,8 +1,8 @@
 <%- include('./partials/header.ejs') %>
 
-<h1>Add a Reference for <% movies.title %></h1>
+<h1>Add a Reference for <%= movies.title %></h1>
 
-<form method="POST" action="/movies">
+<form method="POST" action="/movies/<%=movies.id%>">
     <fieldset>
         <label for="title">Reference Title:</label>
         <input id="title" type="text" name="title" placeholder="Movie Title">

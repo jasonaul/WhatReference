@@ -1,0 +1,15 @@
+<%- include('./partials/header.ejs') %>
+
+
+<h1>Add a Reference to <%=movies.title%></h1>
+
+<form action="/movies/<%=movies.id%>?_method=PUT" method="POST">
+    
+    <label for="reference">Reference Name:</label> 
+    <input id="reference" type="text" name="references[0][reference]" placeholder="Reference Name">
+    <label for="mediaType">Media Type:</label> 
+    <input id="mediaType" type="text" name="mediaType" placeholder="Media Type">
+    <button>Submit</button>
+</form>
+
+<%- include('./partials/footer.ejs') %>

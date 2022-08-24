@@ -2,8 +2,10 @@
 
 <h1><%= movies.title %></h1>
 
-<a href="/movies/<%=movies.id%>/new">Add new reference</a>
+<a href="/movies/<%=movies.id%>/edit">Add new reference</a>
 <br><br><br><br>
+
+<p><%=movies.references%></p>
 
 
 <%- include('./partials/footer.ejs') %> 

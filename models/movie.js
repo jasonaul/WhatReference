@@ -3,9 +3,10 @@ const mongoose = require('mongoose')
 // Creating our Schema for references
 
 const movieSchema = new mongoose.Schema({
-    title: {type: String, required: true},
-    year: {type: Number, required: true},
-    image: {type: String, required: false}
+    title: {type: String, required: false},
+    year: {type: Number, required: false},
+    image: {type: String, required: false},
+    references: [{reference: String, mediaType: String, timestampM: Number, timestampS: Number, description: String, relevance: String, refImg: String}]
 })
 
 // Create the model

@@ -48,16 +48,10 @@ app.get('/movies', async (req, res) => {
     
 })
 
-//SHOW Movies
-app.get('/movies/:id', async (req, res) => {
-    const movies = await Movie.findById(req.params.id);
-    res.render('movieID.ejs', {
-        movies
-    })
-})
+
 
 // NEW MOVIE REFERENCE
-app.get('/movies/:id/new', async (req, res) => {
+/* app.get('/movies/:id/new', async (req, res) => {
     const movies = await Movie.findById(req.params.id);
     res.render('reference.ejs', {
         movies
@@ -72,7 +66,7 @@ app.post('/movies/:id', (req, res) => {
             res.redirect('/movies/:id')
         }
     })
-})
+}) */
 
 
 
@@ -92,6 +86,32 @@ app.post('/movies', (req, res) => {
         }
     })
     
+})
+
+// EDIT Movie / Add Reference
+app.get('/movies/:id/edit', (req, res) =>{
+    Movie.findById(req.params.id, (err, foundMovie) =>{
+        res.render('editMovie.ejs', {movies: foundMovie})
+    })
+})
+
+app.put('/movies/:id', async (req, res) =>{
+    /* const reference = new Reference({reference:req.body.references.reference})
+    await reference.save(); */
+  /*   await Movie.findOneAndUpdate({$push: {reference}}) */
+    Movie.findById(req.params.id, req.body, (err, updatedModel) =>{
+        res.redirect('/movies')
+        console.log(req.body)
+    })
+    
+})
+
+//SHOW Movies
+app.get('/movies/:id', async (req, res) => {
+    const movies = await Movie.findById(req.params.id);
+    res.render('movieID.ejs', {
+        movies
+    })
 })
 
 
