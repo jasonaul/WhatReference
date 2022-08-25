@@ -6,7 +6,7 @@ const movieSchema = new mongoose.Schema({
     title: {type: String, required: false},
     year: {type: Number, required: false},
     image: {type: String, required: false},
-    references: [{reference: String, mediaType: String, timestampM: Number, timestampS: Number, description: String, relevance: String, refImg: String}]
+    references: [{title: String, reference: String, mediaType: String, timestampM: Number, timestampS: Number, description: String, relevance: String, refImg: String}]
 })
 
 // Create the model

@@ -1,3 +1,4 @@
+const { defaultMaxListeners } = require('events');
 const express = require('express');
 const app = express();
 const methodOverride = require('method-override');
@@ -95,16 +96,31 @@ app.get('/movies/:id/edit', (req, res) =>{
     })
 })
 
-app.put('/movies/:id', async (req, res) =>{
-    /* const reference = new Reference({reference:req.body.references.reference})
-    await reference.save(); */
-  /*   await Movie.findOneAndUpdate({$push: {reference}}) */
-    Movie.findById(req.params.id, req.body, (err, updatedModel) =>{
+
+
+app.put('/movies/:id',  (req, res) => {
+    Movie.findByIdAndUpdate(
+        req.params.id,
+        {
+        $push: {
+            references: req.body,
+        }
+        
+    },{new:true}, (err, foundMovie)=> {
+        console.log(foundMovie)
         res.redirect('/movies')
-        console.log(req.body)
     })
     
 })
+
+/* app.put('/movies/:id', async (req, res) => {
+    Movie.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel) => {
+        res.redirect('/movies')
+    })
+    
+})
+ */
+
 
 //SHOW Movies
 app.get('/movies/:id', async (req, res) => {
@@ -118,3 +134,31 @@ app.get('/movies/:id', async (req, res) => {
 app.listen(3000, () => {
     console.log("Server is listening on Port 3000.")
 })
+
+
+/* app.put('/movies/:id', async (req, res) =>{ */
+    /* const reference = new Reference({reference:req.body.references.reference})
+    await reference.save(); */
+  /*   await Movie.findOneAndUpdate({$push: {reference}}) */
+ /*    Movie.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel) => {
+        Movie.updateOne(
+            {$push: {references:[]}}
+        )
+        res.redirect('/movies')
+        console.log(req.body)
+    })
+    
+}) */
+   /*  Movie.findOneAndUpdate(
+        {_id: req.body.id},
+        {$push: {references: Movie} }
+    )
+    res.redirect('/movies')
+        console.log(req.body)
+    }) */
+
+/*     Movie.findOneAndUpdate(
+        {_id: Movie._id},
+        {$push: {references:[{}]}}
+    ).exec() */
+    
