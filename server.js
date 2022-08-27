@@ -2,6 +2,7 @@ const { defaultMaxListeners } = require('events');
 const express = require('express');
 const app = express();
 const methodOverride = require('method-override');
+require("dotenv").config()
 /* const session = require('express-session') */
 
 
@@ -15,14 +16,16 @@ app.use(methodOverride('_method'))
 
 // Mongoose
 const mongoose = require('mongoose')
-const mongoURI = 'mongodb://127.0.0.1:27017/whatreference'
+/* const mongoURI = 'mongodb://127.0.0.1:27017/whatreference'
+ */
+const mongoURI = process.env.MONGODB_URI
 mongoose.connect(mongoURI)
 
 
 //Models Required:
 
-const Movie = require('./models/movie.js');
-const Reference = require('./models/references.js');
+const Movie = require('./models/movies.js');
+/* const Reference = require('./models/references.js'); */
 
 app.get('/', (req, res) => {
     res.render('home.ejs')

@@ -6,18 +6,39 @@
 <form action="/movies/<%=movies.id%>?_method=PUT" method="POST">
     
     <input type="hidden" value="<%=movies.title%>" name="title" id="title">
-    <label for="reference">Reference Name:</label> 
+   
+    
+
+    <fieldset>
+        <label for="reference">Reference Name:</label> 
     <input id="reference" type="text" name="reference" placeholder="Reference Name">
-    <label for="mediaType">Media Type:</label> 
+    
+    </fieldset>
+
+    <fieldset>
+        <label for="mediaType">Media Type:</label> 
     <input id="mediaType" type="text" name="mediaType" placeholder="Media Type">
-    <input id="timestampM" type="number" name="timestampM" placeholder="Timestamp Minute Marker">
-    <label for="timestampM">Minute Timestamp:</label>
-    <input id="timestampS" type="number" name="timestampS" placeholder="Timestamp Second Marker">
-    <label for="timestampS">Minute Timestamp:</label>
-    <input id="description" type="text" name="description" placeholder="description">
-    <label for="description">Description:</label>
-    <input id="refImg" type="text" name="refImg" placeholder="Image/Screengrab or Video Link">
+    
+    </fieldset>
+
+    <fieldset>
+        <label for="timestampM">Minute Timestamp:</label>
+        <input id="timestampM" type="number" name="timestampM" placeholder="Timestamp Minute Marker">
+        <br>
+        <label for="timestampS">Minute Timestamp:</label>
+        <input id="timestampS" type="number" name="timestampS" placeholder="Timestamp Second Marker">
+    
+    </fieldset>
+
+    <fieldset>
+        <label for="description">Description:</label>
+    <input id="description" type="text" name="description" placeholder="Description">
+    <br>
     <label for="refImg">Source Material Image/Video:</label>
+    <input id="refImg" type="text" name="refImg" placeholder="Image/Screengrab or Video Link">
+    
+    </fieldset>
+    <br>
     <button>Submit</button>
 </form>
 

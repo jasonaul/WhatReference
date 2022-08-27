@@ -1,7 +1,7 @@
 <%- include('./partials/header.ejs') %>
 
 <h1 id="mainHeading" class="mainHeading mw-main-heading">
-     <i><%=movies.title%></i>
+     <i><%=movies.title%> (Movie)</i>
 </h1>
 
 <table class="movieInfo">
@@ -21,19 +21,31 @@
 
 </tobdy>
 </table>
-
 <a href="/movies/<%=movies.id%>/edit">Add new reference</a>
+
+<h2 id="descriptionTitle">Overview</h2>
+<p id="descriptionOverview"> <%=movies.description%> <br><br></p>
+
+<h2 id="plotID">Plot</h2>
+<p id="plotOverview"><%=movies.plot%></p>
+
+
 <br><br><br><br>
 
 <p><!-- <%=movies.references%> --></p>
 
-<% for (let i= 0; i < movies.references.length; i++) {
+<% 
+
+for (let i= 0; i < movies.references.length; i++) {
     %>
-    <ul id="movieReference"><%= movies.references[i].reference%>
-        <li id="movieSource"><div id="sourceM">Source Media: </div><%= movies.references[i].mediaType %></li>
-        <li id="movieTimestamp">Timestamp:<%=movies.references[i].timestampM %> minutes, <%=movies.references[i].timestampS %> seconds. </li>
-        <li id="movieDescription">Description: <%=movies.references[i].description%></li>
+    <ul id="refList"> 
+        <li id="movieReference" class="refTitle"><%= movies.references[i].reference%></li>
+        <li id="movieSource"><p id="category"> Source Media:</p><p id="catInfo"><%= movies.references[i].mediaType %></p></li>
+        <li id="movieTimestamp"><p id="category">Timestamp:</p><%=movies.references[i].timestampM %> minutes, <%=movies.references[i].timestampS %> seconds. <br> <br></li>
+        <li id="movieDescription"><p id="category">Description: </p><%=movies.references[i].description%><br><br></li>
+        <li id="catImg"><img class="boxImg" src="<%=movies.references[i].refImg%>"></li>
     </ul>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
 <% } %>
 
 <br><br><br><br>
