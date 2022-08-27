@@ -1,11 +1,40 @@
 <%- include('./partials/header.ejs') %>
 
-<h1><%= movies.title %></h1>
+<h1 id="mainHeading" class="mainHeading mw-main-heading">
+     <i><%=movies.title%></i>
+</h1>
+
+<table class="movieInfo">
+<tobdy>
+    <tr>
+        <th colspan="2" class="moviebox-above">
+        <i> <%=movies.title%></i>
+    </th>
+    </tr>
+    <tr>
+        <td colspan="2" class="moviebox-image">
+            <a href= "/movies/<%=movies.id%>"class="movieImage">
+                <img alt="<%=movies.title%>" src="<%=movies.image%>">
+            </a>
+        </td>
+    </tr>
+
+</tobdy>
+</table>
 
 <a href="/movies/<%=movies.id%>/edit">Add new reference</a>
 <br><br><br><br>
 
-<p><%=movies.references%></p>
+<p><!-- <%=movies.references%> --></p>
+
+<% for (let i= 0; i < movies.references.length; i++) {
+    %>
+    <ul id="movieReference"><%= movies.references[i].reference%>
+        <li id="movieSource"><div id="sourceM">Source Media: </div><%= movies.references[i].mediaType %></li>
+        <li id="movieTimestamp">Timestamp:<%=movies.references[i].timestampM %> minutes, <%=movies.references[i].timestampS %> seconds. </li>
+        <li id="movieDescription">Description: <%=movies.references[i].description%></li>
+    </ul>
+<% } %>
 
 <br><br><br><br>
 

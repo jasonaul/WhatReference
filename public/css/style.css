@@ -39,3 +39,49 @@
 				color: black;
 		}
 	}
+
+h1 {
+    display: block;
+    font-weight: normal;
+    border-bottom: 1px solid #a2a9b1;
+    padding-left: 20px;
+}
+
+
+.movieInfo {
+    border: 1px solid black;
+    border-spacing: 3px;
+    background-color: #f8f9fa;
+    color: black;
+    margin: 0.5em 0 0.5em 1em;
+    padding: 0.2em;
+    float: right;
+    clear: right;
+    font-size: 88%;
+    line-height: 1.5em;
+    width: 22em;
+    margin-right: 10px;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.moviebox-above {
+    background: #CCCCFF;
+    padding: 0.25em 1em;
+    font-size: 125%;
+    text-align: center;
+}
+
+i {
+    font-style: italic;
+    text-align: center;
+    font-size: 125%;
+}
+
+.moviebox-image {
+    aspect-ratio: auto;
+}
