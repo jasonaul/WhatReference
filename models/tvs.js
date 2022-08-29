@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 // Creating our Schema for references
 
-const movieSchema = new mongoose.Schema({
+const tvSchema = new mongoose.Schema({
     title: {type: String, required: false},
     year: {type: String, required: false},
     image: {type: String, required: false},
@@ -11,11 +11,11 @@ const movieSchema = new mongoose.Schema({
     imdb: {type: String, required: false},
     description: {type: String, required: false},
     plot: {type: String, required: false},
-    references: [{title: String, reference: String, mediaType: String, timestampM: Number, timestampS: Number, description: String, relevance: String, refImg: String}]
+    references: [{title: String, season: String, episode: String, episodeName: String, reference: String, mediaType: String, timestampM: Number, timestampS: Number, description: String, relevance: String, refImg: String}]
 })
 
 // Create the model
     //'Reference' is the collection, referenceSchema is the schema
-const Movie = mongoose.model('Movie', movieSchema)
+const TV = mongoose.model('TV', tvSchema)
 
-module.exports = Movie; 
+module.exports = TV; 

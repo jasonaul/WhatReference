@@ -6,6 +6,10 @@
 }
 
 .menuItems {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+   
     border-radius: 25px;
     position: relative;
     text-align: center;
@@ -21,7 +25,10 @@
 }
 
 #nav {
+    
     list-style: none;
+    width: 50%;
+    float: right;
     position: relative;
     color: white;
     font-weight: bold;
@@ -31,6 +38,9 @@
     cursor: pointer;
     white-space: nowrap;
     justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 	}
 
 h1 {
@@ -44,6 +54,10 @@ h1 {
     background-color: rgb(233, 233, 233)
 }
 
+.infobox-label {
+    padding-left: 7px;
+    padding-top: 5px;
+}
 
 .movieInfo {
     border: 1px solid black;
@@ -56,7 +70,8 @@ h1 {
     clear: right;
     font-size: 88%;
     line-height: 1.5em;
-    width: 22em;
+    width: auto;
+    max-width: 200px;
     margin-right: 10px;
 }
 
@@ -79,25 +94,17 @@ i {
     font-size: 125%;
 }
 
-.moviebox-image {
-    aspect-ratio: auto;
+#tvImage {
+    width: 200px;
+    height: auto;
 }
 
-/* #refList {
-    display: inline-flex;
-    list-style: none;
-    width: 100%;
-    border: 1px solid #000;
-    background-color: #e0e0f9;
-} */
+
+
 
 #refList {
-    position: absolute;
-    float: right;
     list-style: none;
-    display: inline-flex;
-    flex-direction: column;
-    min-width: 0;
+    width: 50%;
     word-wrap: break-word;
     background-color: #e0e0f9;
     background-clip: border-box;
@@ -105,11 +112,31 @@ i {
     border-radius: 0.25rem;
     margin-left:20%;
     padding-right: 20px;
-    margin-bottom: 1em;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.referenceContainer {
+    display: flex;
+    flex-direction: column; 
+    flex-wrap: wrap;
+    flex-flow: column wrap;
+    justify-content: space-between;
 }
 
 #category {
     font-weight: bold;
+}
+
+#dataUL {
+    list-style: none;
+    padding-right: 5px;
+}
+
+#wikipedia, #imdb {
+    max-width: 75px;
+    padding-right: 25px;
+    padding-top: 10px;
 }
 
 .boxImg {
@@ -118,6 +145,7 @@ i {
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 20px;
+    max-width: 400px;
 }
 
 .refTitle {

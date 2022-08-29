@@ -1,0 +1,98 @@
+<%- include('./partials/header.ejs') %>
+
+<h1 id="mainHeading" class="mainHeading mw-main-heading">
+     <i><%=tvs.title%> (TV Show)</i>
+</h1>
+
+<table class="movieInfo">
+<tobdy>
+    <tr>
+        <th colspan="2" class="moviebox-above">
+        <i> <%=tvs.title%></i>
+    </th>
+    </tr>
+    <tr>
+        <td colspan="2" class="moviebox-image">
+            <a href= "/television/<%=tvs.id%>"class="movieImage">
+                <img id="tvImage" alt="<%=tvs.title%>" src="<%=tvs.image%>">
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row" class="infobox-label">Release Year</th>
+        <td class="infobox-data category">
+            <div class="plain">
+                <ul id="dataUL">
+                    <li id="yearLI"><%=tvs.year%></li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row" class="infobox-label">Wikipedia Link</th>
+        <td class="infobox-data category">
+            <div class="plain">
+                <ul id="dataUL">
+                    <li ><a href="<%=tvs.wikipedia%>"><img id="wikipedia" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Wikipedia-logo-v2-en.svg/418px-Wikipedia-logo-v2-en.svg.png" alt="Wikipedia"></a></li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row" class="infobox-label">IMDB Link</th>
+        <td class="infobox-data category">
+            <div class="plain">
+                <ul id="dataUL">
+                    <li ><a href="<%=tvs.imdb%>"><img id="imdb" src="https://ia.media-imdb.com/images/M/MV5BODc4MTA3NjkzNl5BMl5BcG5nXkFtZTgwMDg0MzQ2OTE@._V1_.png" alt="IMDB"></a></li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row" class="infobox-label">Edit Info</th>
+        <td class="infobox-data category">
+            <div class="plain">
+                <ul id="dataUL">
+                    <li ><a href="/television/<%=tvs.id%>/edit2">EDIT TV INFORMATION</a></li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+</tobdy>
+</table>
+<a href="/television/<%=tvs.id%>/edit">Add new reference</a>
+
+<h2 id="descriptionTitle">Overview</h2>
+<p id="descriptionOverview"> <%=tvs.description%> <br><br></p>
+
+<h2 id="plotID">Plot</h2>
+<p id="plotOverview"><%=tvs.plot%></p>
+
+
+<br><br><br><br>
+
+
+<div class="referenceContainer">
+<% 
+
+for (let i= 0; i < tvs.references.length; i++) {
+    %>
+    
+    <ul id="refList"> 
+        <li id="movieReference" class="refTitle"><%= tvs.references[i].reference%></li>
+        <li id="episode"><p id="episodeName">Episode Name:</p><%= tvs.references[i].episodeName%> </p></li>
+        <li id="movieSource"><p id="category"> Source Media:</p><p id="catInfo"><%= tvs.references[i].mediaType %></p></li>
+        <li id="movieTimestamp"><p id="category">Timestamp:</p><%=tvs.references[i].timestampM %> minutes, <%=tvs.references[i].timestampS %> seconds. <br> <br></li>
+        <li id="movieDescription"><p id="category">Description: </p><%=tvs.references[i].description%><br><br></li>
+        <li id="catImg"><img class="boxImg" src="<%=tvs.references[i].refImg%>"></li>
+        <li id="delete"><button type="submit" onclick="movies.references[i].remove(tvs.references[i])">Delete Reference</button></li>
+    </ul>
+    
+    
+<% } %>
+</div>
+
+<br><br><br><br>
+
+<%- include('./partials/footer.ejs') %> 

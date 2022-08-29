@@ -1,0 +1,57 @@
+<%- include('../partials/header.ejs') %>
+
+
+<h1>Add a Reference to <%=tvs.title%></h1>
+
+<form action="/television/<%=tvs.id%>?_method=PUT" method="POST">
+    
+    <input type="hidden" value="<%=tvs.title%>" name="title" id="title">
+   
+    
+
+    <fieldset>
+        <label for="reference">Reference Name:</label> 
+    <input id="reference" type="text" name="reference" placeholder="Reference Name">
+    
+    </fieldset>
+
+    <fieldset>
+        <label for="season"><%=tvs.title%> Season</label>
+        <input id="season" type="text" name="season" placeholder="Season">
+        <label for="episode">Episode Number</label>
+        <input id="episode" type="text" name="episode" placeholder="Episode">
+    </fieldset>
+
+    <fieldset>
+        <label for="episodeName">Episode Name</label>
+        <input id="episodeName" type="text" name="episodeName" placeholder="Episode Name...">
+    </fieldset>
+
+    <fieldset>
+        <label for="mediaType">Media Type:</label> 
+    <input id="mediaType" type="text" name="mediaType" placeholder="Media Type">
+    
+    </fieldset>
+
+    <fieldset>
+        <label for="timestampM">Minute Timestamp:</label>
+        <input id="timestampM" type="number" name="timestampM" placeholder="Timestamp Minute Marker">
+        <br>
+        <label for="timestampS">Minute Timestamp:</label>
+        <input id="timestampS" type="number" name="timestampS" placeholder="Timestamp Second Marker">
+    
+    </fieldset>
+
+    <fieldset>
+        <label for="description">Description:</label>
+    <input id="description" type="text" name="description" placeholder="Description">
+    <br>
+    <label for="refImg">Source Material Image/Video:</label>
+    <input id="refImg" type="text" name="refImg" placeholder="Image/Screengrab or Video Link">
+    
+    </fieldset>
+    <br>
+    <button>Submit</button>
+</form>
+
+<%- include('../partials/footer.ejs') %>

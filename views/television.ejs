@@ -1,0 +1,24 @@
+<%- include('./partials/header.ejs') %>
+
+<h1>Television</h1>
+
+<a href='/television/new'><h2>Add a New TV Show</h2></a>
+
+<ul>
+    <% for (let i = 0; i < tvs.length; i++) {
+        %>
+    
+    <li>
+        <a href="/television/<%= tvs[i].id %>">
+            <%=tvs[i].title%>
+        </a>
+    </li>
+    <% } %>
+    
+</ul>
+
+
+
+
+
+<%- include('./partials/footer.ejs') %>

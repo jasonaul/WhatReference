@@ -32,21 +32,29 @@
 
 <br><br><br><br>
 
-<p><!-- <%=movies.references%> --></p>
 
+<div class="referenceContainer">
 <% 
 
 for (let i= 0; i < movies.references.length; i++) {
     %>
+    
     <ul id="refList"> 
         <li id="movieReference" class="refTitle"><%= movies.references[i].reference%></li>
         <li id="movieSource"><p id="category"> Source Media:</p><p id="catInfo"><%= movies.references[i].mediaType %></p></li>
         <li id="movieTimestamp"><p id="category">Timestamp:</p><%=movies.references[i].timestampM %> minutes, <%=movies.references[i].timestampS %> seconds. <br> <br></li>
         <li id="movieDescription"><p id="category">Description: </p><%=movies.references[i].description%><br><br></li>
         <li id="catImg"><img class="boxImg" src="<%=movies.references[i].refImg%>"></li>
+        <li id="delete"><button onclick="Movie.update(
+            {},
+            { $pull: { references: { id: movies.references[i].id} } },
+            { new: true },
+          )">Delete Reference</button></li>
     </ul>
-    <br><br><br><br><br><br><br><br><br><br><br><br>
+    
+    
 <% } %>
+</div>
 
 <br><br><br><br>
 

@@ -1,0 +1,48 @@
+<%- include('../partials/header.ejs') %>
+
+
+<h1>Edit Information For <%=tvs.title%></h1>
+
+<form action="/television/<%=tvs.id%>?_method=PUT" method="POST">
+    
+    <input type="hidden" value="<%=tvs.title%>" name="title" id="title">
+   
+    
+
+    <fieldset>
+        <label for="title">TV Show Title</label> 
+    <input id="title" type="text" name="title" placeholder="TV Show Title">    
+    </fieldset>
+
+    <fieldset>
+        <label for="year">Year</label>
+        <input id="year" type="text" name="year" placeholder="Year">
+        <label for="image">Image/Poster URL</label>
+        <input id="image" type="text" name="image" placeholder="Image/Poster URL">
+    </fieldset>
+
+    <fieldset>
+        <label for="wikipedia">Wikipedia Link</label>
+        <input id="wikipedia" type="text" name="wikipedia" placeholder="Wikipedia Link">
+    </fieldset>
+
+    <fieldset>
+        <label for="imdb">IMDB Link</label>
+        <input id="imdb" type="text" name="imdb" placeholder="IMDB Link">
+    </fieldset>
+
+    <fieldset>
+        <label for="description">Show Description</label>
+        <input id="description" type="text" name="description" placeholder="Show Description">
+    </fieldset>
+
+    <fieldset>
+        <label for="plot">Show Plot</label>
+        <input id="plot" type="text" name="plot" placeholder="Show Plot">
+    </fieldset>
+    
+    <br>
+    <button>Submit</button>
+</form>
+
+<%- include('../partials/footer.ejs') %>
