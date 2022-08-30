@@ -139,27 +139,35 @@ app.get('/television/:id/edit', (req, res) =>{
     })
 })
 
-app.get('/television/:id/edit2', (req, res) => {
-    TV.findById(req.params.id, (err, foundTV) =>{
-        res.render('./mainEdits/editTV.ejs', {tvs: foundTV})
-    })
-})
+
 
 app.put('/television/:id',  (req, res) => {
+    
     TV.findByIdAndUpdate(
         req.params.id,
         {
         $push: {
             references: req.body,
         }
-        
+    
     },{new:true}, (err, foundTV)=> {
         
         res.redirect('/television')
     })
 })
 
+app.get('/television/:id/edit2', (req, res) => {
+    TV.findById(req.params.id, (err, foundTV) =>{
+        res.render('./mainEdits/editTV.ejs', {tvs: foundTV})
+    })
+    console.log(req.params.id)
+})
 
+app.put('/television/:id', (req, res) => {
+    TV.findByIdAndUpdate(req.params.id,  {new: true}, (err, updatedTV) => {
+        res.redirect('/television/:id')
+    })
+})
 /* app.put('/television/:id', (req, res) => {
     TV.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel) => {
         res.redirect('/television')
@@ -171,17 +179,21 @@ app.put('/television/:id',  (req, res) => {
 
 app.put('/television/:id', (req, res) => {
     
-    TV.findByIdAndRemove(
+    TV.updateOne(
         {},
         {
         $pull: {
-            references: tvs.references[i].id,
+            references: tvs.references[i].title,
         }    
         }, {new:true}, (err, foundTV)=> {
             res.redirect('/television')
         }
+        
     )
+    console.log("This is in the route!",tvs.references[i].title)
 })
+
+
 
 
 //SHOW TV
@@ -189,6 +201,14 @@ app.get('/television/:id', async (req, res) => {
     const tvs = await TV.findById(req.params.id);
     res.render('tvID.ejs', {
         tvs
+    })
+})
+
+//DELETE/DESTROY WHOLE TV SHOW
+app.delete('/television/:id', (req, res) => {
+    TV.findByIdAndRemove(req.params.id, (err, data)=> {
+        if(err) console.log(err)
+        res.redirect('/television')
     })
 })
 

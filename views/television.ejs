@@ -2,21 +2,22 @@
 
 <h1>Television</h1>
 
-<a href='/television/new'><h2>Add a New TV Show</h2></a>
+<a href='/television/new'><h2 id="addShow">Add a New TV Show</h2></a>
 
-<ul>
+
+
+<ul id="tvList">
     <% for (let i = 0; i < tvs.length; i++) {
         %>
-    
-    <li>
-        <a href="/television/<%= tvs[i].id %>">
-            <%=tvs[i].title%>
-        </a>
+
+    <li id="tvListLI">
+        <div class="imageContainer"> <a href="/television/<%= tvs[i].id %>"><img id="LIimage" src="<%= tvs[i].image%>"></a>
+        <p class="centeredText"><a id="imgText" href="/television/<%=tvs[i].id%>"><%=tvs[i].title%></p></a>
+    </div>
     </li>
     <% } %>
     
 </ul>
-
 
 
 

@@ -9,5 +9,6 @@ mongoose
     .catch((err) => console.log(err))
 
     module.exports = {
-        Movie: require('./movies')
+        Movie: require('./movies'),
+        TV: require('./television')
     }

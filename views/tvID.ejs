@@ -72,6 +72,20 @@
 
 <br><br><br><br>
 
+<!-- <script>
+    function deleteTV(){
+    TV.updateOne(
+        {},
+        {
+        $pull: {
+            references: tvs.references[i].title,
+        }    
+        }, {new:true}, (err, foundTV)=> {
+            res.redirect('/television')
+        }
+        
+    )}
+</script> -->
 
 <div class="referenceContainer">
 <% 
@@ -86,12 +100,16 @@ for (let i= 0; i < tvs.references.length; i++) {
         <li id="movieTimestamp"><p id="category">Timestamp:</p><%=tvs.references[i].timestampM %> minutes, <%=tvs.references[i].timestampS %> seconds. <br> <br></li>
         <li id="movieDescription"><p id="category">Description: </p><%=tvs.references[i].description%><br><br></li>
         <li id="catImg"><img class="boxImg" src="<%=tvs.references[i].refImg%>"></li>
-        <li id="delete"><button type="submit" onclick="movies.references[i].remove(tvs.references[i])">Delete Reference</button></li>
+        <li id="delete"><button type="submit" onclick="deleteTV()">Delete Reference</button></li>
     </ul>
-    
-    
-<% } %>
+
+    <div id="deleteFull"> <form onsubmit="return confirm('Do you REALLY want ot delete the whole TV show?');" action="/television/<%=tvs.id%>?_method=DELETE" method="POST">
+        <input type="submit" value="DELETE" /></div>
+
+<%  } %>
 </div>
+
+
 
 <br><br><br><br>
 
