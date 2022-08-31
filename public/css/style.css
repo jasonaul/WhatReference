@@ -107,7 +107,12 @@ i {
     
 }
 
-
+#movieReference {
+  background: transparent;
+  border-color: transparent;
+  margin-left: 20%;
+  
+}
 
 
 #refList {

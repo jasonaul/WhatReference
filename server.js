@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const methodOverride = require('method-override');
 require("dotenv").config()
-
+const PORT = process.env.PORT
 
 
 
@@ -171,18 +171,19 @@ app.put('/television/:id', (req, res) => {
 
 // DELETE/DESTROY Reference
 
-app.delete('/television/:id', (req, res) => {
+app.put('/television/:id/reference', (req, res) => {
     let body = req.body.refID
     console.log("This is the req.body.refID", req.body.refID)
     TV.updateOne(
         {id: req.params.id},
         {
         $pull: {
-            references: {_id: mongoose.Types.ObjectId(body)},
+            references: {_id: {$in: [body]}},
         }    
         }, {new:true}, (err, foundTV)=> {
-            console.log("This is foundTV", foundTV)
-            res.redirect('#')
+            if (err) {console.log(err)}
+            else {console.log("This is foundTV", foundTV)
+            res.redirect('/television')};
         }
         
     )
@@ -209,6 +210,6 @@ app.delete('/television/:id', (req, res) => {
 })
 
 app.listen(3000, () => {
-    console.log("Server is listening on Port 3000.")
+    console.log("Server is listening on ", PORT)
 })
 
