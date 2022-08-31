@@ -3,7 +3,7 @@
 
 <h1>Add a Reference to <%=tvs.title%></h1>
 
-<form action="/television/<%=tvs.id%>?_method=PUT" method="POST">
+<form action="/television/<%=tvs._id%>/ref/?_method=PUT" method="POST">
     
     <input type="hidden" value="<%=tvs.title%>" name="title" id="title">
    

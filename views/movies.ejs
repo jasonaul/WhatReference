@@ -2,13 +2,16 @@
 
 <h1>Movies</h1>
 
-<ul>
+<a href='/movies/new'><h2 id="addShow">Add a New Movie</h2></a>
+
+
+<ul id="tvList">
     <% for (let i = 0; i < movies.length; i++) {
         %>
     
-    <li>
-        <a href="/movies/<%= movies[i].id %>">
-            <%=movies[i].title%>
+    <li id="tvListLI">
+        <div class="imageContainer"> <a href="/movies/<%= movies[i].image%>"></a>
+            <p class="centeredText"><a id="imgText" href="/movies/<%=movies[i].id%>"><%=movies[i].title%></a>
         </a>
     </li>
     <% } %>

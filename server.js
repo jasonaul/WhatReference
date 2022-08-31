@@ -139,9 +139,7 @@ app.get('/television/:id/edit', (req, res) =>{
     })
 })
 
-
-
-app.put('/television/:id',  (req, res) => {
+app.put('/television/:id/ref',  (req, res) => {
     
     TV.findByIdAndUpdate(
         req.params.id,
@@ -153,7 +151,7 @@ app.put('/television/:id',  (req, res) => {
     },{new:true}, (err, foundTV)=> {
         
         res.redirect('/television')
-    })
+    })    
 })
 
 app.get('/television/:id/edit2', (req, res) => {
@@ -164,33 +162,31 @@ app.get('/television/:id/edit2', (req, res) => {
 })
 
 app.put('/television/:id', (req, res) => {
-    TV.findByIdAndUpdate(req.params.id,  {new: true}, (err, updatedTV) => {
-        res.redirect('/television/:id')
+    console.log(req.body)
+    TV.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedTV) => {
+     console.log(updatedTV),   res.redirect('/television')
     })
 })
-/* app.put('/television/:id', (req, res) => {
-    TV.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel) => {
-        res.redirect('/television')
-    })
-}) */
 
 
 // DELETE/DESTROY Reference
 
-app.put('/television/:id', (req, res) => {
-    
+app.delete('/television/:id', (req, res) => {
+    let body = req.body.refID
+    console.log("This is the req.body.refID", req.body.refID)
     TV.updateOne(
-        {},
+        {id: req.params.id},
         {
         $pull: {
-            references: tvs.references[i].title,
+            references: {_id: mongoose.Types.ObjectId(body)},
         }    
         }, {new:true}, (err, foundTV)=> {
-            res.redirect('/television')
+            console.log("This is foundTV", foundTV)
+            res.redirect('#')
         }
         
     )
-    console.log("This is in the route!",tvs.references[i].title)
+    console.log("This is in the route!", req.params)
 })
 
 

@@ -100,8 +100,11 @@ i {
 }
 
 #tvImage {
-    width: 200px;
+    display: block;
+    max-width: 250px;
     height: auto;
+    width: 100%;
+    
 }
 
 
@@ -123,7 +126,7 @@ i {
 
 #tvList {
     list-style: none;
-    columns: 4;
+    columns: 3;
     width: 100%;
     
     background-color: #a8a8ae;
@@ -131,7 +134,7 @@ i {
     border: 3px solid rgba(93, 92, 92, 0.125);
     border-radius: 0.25rem;
     margin-left:1%;
-    
+    margin-right: 10px;
     margin-bottom: 5px;
     margin-top: 5px;
 }

@@ -92,23 +92,28 @@
 
 for (let i= 0; i < tvs.references.length; i++) {
     %>
-    
-    <ul id="refList"> 
-        <li id="movieReference" class="refTitle"><%= tvs.references[i].reference%></li>
-        <li id="episode"><p id="episodeName">Episode Name:</p><%= tvs.references[i].episodeName%> </p></li>
-        <li id="movieSource"><p id="category"> Source Media:</p><p id="catInfo"><%= tvs.references[i].mediaType %></p></li>
-        <li id="movieTimestamp"><p id="category">Timestamp:</p><%=tvs.references[i].timestampM %> minutes, <%=tvs.references[i].timestampS %> seconds. <br> <br></li>
-        <li id="movieDescription"><p id="category">Description: </p><%=tvs.references[i].description%><br><br></li>
-        <li id="catImg"><img class="boxImg" src="<%=tvs.references[i].refImg%>"></li>
-        <li id="delete"><button type="submit" onclick="deleteTV()">Delete Reference</button></li>
-    </ul>
+    <%= console.log(tvs.id)%>
 
-    <div id="deleteFull"> <form onsubmit="return confirm('Do you REALLY want ot delete the whole TV show?');" action="/television/<%=tvs.id%>?_method=DELETE" method="POST">
-        <input type="submit" value="DELETE" /></div>
+    <form class="refList" action="/television/<%=tvs.id%>?_method=DELETE" method="POST"> 
+
+        <input type="hidden" value="<%=tvs.references[i].id%>" name="refID">
+
+        <input id="movieReference" class="refTitle" readonly value="<%= tvs.references[i].reference%>">
+        <input id="episode" readonly value="<%= tvs.references[i].episodeName%>">
+        <input id="movieSource" readonly value="<%= tvs.references[i].mediaType %>">
+        <input id="movieTimestamp" readonly value="<%=tvs.references[i].timestampM %> minutes, <%=tvs.references[i].timestampS %> seconds.">
+        <input id="movieDescription" readonly value="<%=tvs.references[i].description%>">
+        <input id="catImg" readonly value="<%=tvs.references[i].refImg%>"><img class="boxImg" src="<%=tvs.references[i].refImg%>">
+        
+        <button id="delete" type="submit" action value="delete">Delete Reference</button>
+    </form>
+
+    
 
 <%  } %>
 </div>
-
+<div id="deleteFull"> <form onsubmit="return confirm('Do you REALLY want to delete the whole TV show?');" action="/television/<%=tvs.id%>?_method=DELETE" method="POST">
+    <input type="submit" value="DELETE" /></div>
 
 
 <br><br><br><br>
