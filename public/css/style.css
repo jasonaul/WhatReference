@@ -1,3 +1,4 @@
+
 #headerImg {
     display: block;
     margin-left: auto;
@@ -60,6 +61,16 @@ h1 {
     padding-top: 5px;
 }
 
+#movieBoxImage {
+  max-width: 100%;
+}
+
+#deleteFull {
+  display: block;
+  margin-left: 30%;
+  margin-top: 25px;
+}
+
 .movieInfo {
     border: 1px solid black;
     border-spacing: 3px;
@@ -107,12 +118,12 @@ i {
     
 }
 
-#movieReference {
+/* #movieReference {
   background: transparent;
   border-color: transparent;
   margin-left: 20%;
   
-}
+} */
 
 
 #refList {
@@ -329,6 +340,47 @@ i {
   background-color: #717171;
 }
 
+.form-style {
+  margin: 10px auto;
+  max-width: 500px;
+  padding: 20px 12px 10px 20px;
+  font: 13px
+}
+
+.editInput {
+  padding: 0;
+  display: block;
+  margin: 10px 0 10px 10px;
+}
+.field-short {
+  height: 30px;
+  padding-right: 50px;
+}
+.field-long {
+  width: 100%;
+  height: 200px;
+  box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border:1px solid #BEBEBE;
+	padding: 7px;
+	margin:0px;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+}
+
+
+
+label {
+  margin: 0 0 3px 0;
+  padding: 0px;
+  display: block;
+  font-weight: bold;
+}
+
 /* Fading animation */
 .fade {
   animation-name: fade;
@@ -339,3 +391,4 @@ i {
   from {opacity: 1}
   to {opacity: 1}
 }
+

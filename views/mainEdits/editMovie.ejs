@@ -1,0 +1,43 @@
+<%- include('../partials/header.ejs') %>
+
+
+<h1>Edit Information For <%=movies.title%></h1>
+
+<form class="form-style" action="/movies/<%=movies.id%>?_method=PUT" method="POST">
+    <fieldset>
+        <label for="title">TV Show Title</label> 
+    <input class="editInput" id="title" type="text" name="title" value="<%=movies.title%>">    
+    </fieldset>
+
+    <fieldset>
+        <label for="year">Year</label>
+        <input class="editInput" id="year" type="text" name="year" value="<%=movies.year%>">
+        <label for="image">Image/Poster URL</label>
+        <input class="editInput" id="image" type="text" name="image" value="<%=movies.image%>">
+    </fieldset>
+
+    <fieldset>
+        <label for="wikipedia">Wikipedia Link</label>
+        <input class="editInput field-short" id="wikipedia" type="text" name="wikipedia" value="<%=movies.wikipedia%>">
+    </fieldset>
+
+    <fieldset>
+        <label for="imdb">IMDB Link</label>
+        <input class="editInput field-short" id="imdb" type="text" name="imdb" value="<%=movies.imdb%>">
+    </fieldset>
+
+    <fieldset>
+        <label for="description">Show Description</label>
+        <input class="editInput field-long" id="description" type="text" name="description" value="<%=movies.plot%>">
+    </fieldset>
+
+    <fieldset>
+        <label for="plot">Show Plot</label>
+        <input class="editInput field-long" id="plot" type="text" name="plot" value="<%=movies.plot%>">
+    </fieldset>
+    
+    <br>
+    <input type="submit" name="" value="Submit Changes"/>
+</form>
+
+<%- include('../partials/footer.ejs') %>

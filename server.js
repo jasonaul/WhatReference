@@ -68,15 +68,15 @@ app.post('/movies', (req, res) => {
 })
 
 // EDIT Movie / Add Reference
-app.get('/movies/:id/edit', (req, res) =>{
+app.get('/movies/:id/edit2', (req, res) =>{
     Movie.findById(req.params.id, (err, foundMovie) =>{
-        res.render('./references/editMovieRef.ejs', {movies: foundMovie})
+        res.render('./mainEdits/editMovie.ejs', {movies: foundMovie})
     })
 })
 
 
 
-app.put('/movies/:id',  (req, res) => {
+app.put('/movies/:id/ref',  (req, res) => {
     Movie.findByIdAndUpdate(
         req.params.id,
         {
@@ -88,10 +88,29 @@ app.put('/movies/:id',  (req, res) => {
         
         res.redirect('/movies')
     })
-    console.log(req.params.id)
+    /* console.log(req.params.id) */
 })
 
-// DELETE/DESTROY Reference
+app.get('/movies/:id/edit2', (req, res) =>{
+    Movie.findById(req.params.id, (err, foundMovie) =>{
+        res.render('./mainEdits/editMovie.ejs', {movies: foundMovie})
+    })
+})
+app.put('/movies/:id', (req, res) => {
+    /* console.log(req.body) */
+    Movie.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedMovie) => {
+     console.log(updatedMovie),   res.redirect('/movies')
+    })
+})
+
+// DELETE/DESTROY WHOLE MOVIE
+
+app.delete('/movies/:id', (req, res) => {
+    Movie.findByIdAndRemove(req.params.id, (err, data)=> {
+        if(err) console.log(err)
+        res.redirect('/movies')
+    })
+})
 
 
 
@@ -158,11 +177,11 @@ app.get('/television/:id/edit2', (req, res) => {
     TV.findById(req.params.id, (err, foundTV) =>{
         res.render('./mainEdits/editTV.ejs', {tvs: foundTV})
     })
-    console.log(req.params.id)
+    /* console.log(req.params.id) */
 })
 
 app.put('/television/:id', (req, res) => {
-    console.log(req.body)
+    /* console.log(req.body) */
     TV.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedTV) => {
      console.log(updatedTV),   res.redirect('/television')
     })
@@ -209,7 +228,7 @@ app.delete('/television/:id', (req, res) => {
     })
 })
 
-app.listen(PORT, () => {
+app.listen(PORT || 3000, () => {
     console.log("Server is listening on ", PORT)
 })
 

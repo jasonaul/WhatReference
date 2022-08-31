@@ -3,41 +3,42 @@
 
 <h1>Edit Information For <%=tvs.title%></h1>
 
-<form action="/television/<%=tvs.id%>?_method=PUT" method="POST">
+<form class="form-style" action="/television/<%=tvs.id%>?_method=PUT" method="POST">
     <fieldset>
         <label for="title">TV Show Title</label> 
-    <input id="title" type="text" name="title" placeholder="TV Show Title">    
+    <input class="editInput" id="title" type="text" name="title" value="<%=tvs.title%>">    
     </fieldset>
 
     <fieldset>
         <label for="year">Year</label>
-        <input id="year" type="text" name="year" placeholder="Year">
+        <input class="editInput" id="year" type="text" name="year" placeholder="Year">
         <label for="image">Image/Poster URL</label>
-        <input id="image" type="text" name="image" placeholder="Image/Poster URL">
+        <input class="editInput" id="image" type="text" name="image" value="<%=tvs.image%>">
     </fieldset>
 
     <fieldset>
         <label for="wikipedia">Wikipedia Link</label>
-        <input id="wikipedia" type="text" name="wikipedia" placeholder="Wikipedia Link">
+        <input class="editInput field-short" id="wikipedia" type="text" name="wikipedia" value="<%=tvs.wikipedia%>">
     </fieldset>
 
     <fieldset>
         <label for="imdb">IMDB Link</label>
-        <input id="imdb" type="text" name="imdb" placeholder="IMDB Link">
+        <input class="editInput field-short" id="imdb" type="text" name="imdb" value="<%=tvs.imdb%>">
     </fieldset>
 
     <fieldset>
         <label for="description">Show Description</label>
-        <input id="description" type="text" name="description" placeholder="Show Description">
+        <input class="editInput field-long" id="description" type="text" name="description" value="<%=tvs.description%>">
+        
     </fieldset>
 
     <fieldset>
         <label for="plot">Show Plot</label>
-        <input id="plot" type="text" name="plot" placeholder="Show Plot">
+        <input class="editInput field-long" id="plot" type="text" name="plot" value="<%=tvs.plot%>">
     </fieldset>
     
     <br>
-    <input type="submit" name="" value="Submit Changes"/>
+    <input class="submit" type="submit" name="" value="Submit Changes"/>
 </form>
 
 <%- include('../partials/footer.ejs') %>
