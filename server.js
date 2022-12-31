@@ -1,3 +1,4 @@
+//The Basics
 const { defaultMaxListeners } = require('events');
 const express = require('express');
 const app = express();
@@ -5,34 +6,28 @@ const methodOverride = require('method-override');
 require("dotenv").config()
 const PORT = process.env.PORT
 
-
-
 // Middleware
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'))
 
-
 // Mongoose
 const mongoose = require('mongoose')
 const mongoURI = process.env.MONGODB_URI
 mongoose.connect(mongoURI)
-
 
 //Models Required:
 
 const Movie = require('./models/movies.js');
 const TV = require('./models/tvs.js')
 
-
+// HOME
 app.get('/', (req, res) => {
     res.render('home.ejs')
 })
 
-
-
-
+//Reference for Testing
 app.get('/references', (req, res) => {
     res.send("Initial set-up begun")
 })
